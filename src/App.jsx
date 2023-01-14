@@ -1,23 +1,37 @@
+import { useEffect } from 'react'
 import { useState } from 'react'
+import axios from "axios"
+import "./App.css"
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const API_URL = import.meta.env.VITE_API_URL
+
+  const [cryptos, setCryptos] = useState()
+
+  useEffect(() => {
+    // api.coincap.io/v2/assets/bitcoin
+    
+    axios.get(`${API_URL}assets`)
+      .then((data) => {
+        setCryptos(data.data.data)
+      })
+      .catch(() => {
+        console.error("La peticion Fallo")
+      })
+  }, [])
+
+  if (!cryptos) return <><span>Cargando...</span></>
 
   return (
-    <div className="App">
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <>
+      <h1>Lista de Criptomonedas</h1>
+      <ol>
+        { cryptos.map(({id, name, priceUsd}) => (
+          <li key={id}> Nombre: { name }, Precio: { priceUsd} </li>
+        ))}
+      </ol>
+    </>
   )
 }
 

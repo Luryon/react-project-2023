@@ -1,0 +1,11 @@
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode";
+}
+
+body {
+    color: whitesmoke;
+    background: rgb(0,15,22);
+    background: linear-gradient(rgb(#0f0c29),#302b63,#24243e);
+}

@@ -1,0 +1,36 @@
+
+.cryptoGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 1rem;
+}
+
+.item {
+    border: 1px solid skyblue;
+    border-radius: 10px;
+    padding: 1rem;
+    border-left: 10px solid skyblue;
+}
+
+.info {
+    color: gray;
+}
+
+.label {
+    color: skyblue;
+}
+
+.positive {
+    color: yellowgreen;
+}
+
+.negative {
+    color: red;
+}
+
+
+.item:hover {
+    border: 1px solid darkblue;
+    border-left: 10px solid darkblue;
+    cursor: pointer;
+}
